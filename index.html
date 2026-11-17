@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="101 Fintech - La tarjeta de crédito sin cuota de manejo. Tu pase libre a lo que quieres, con tecnología financiera 100% digital.">
+  <meta name="theme-color" content="#213B78">
+  <title>101 Fintech | La tarjeta de crédito sin cuota de manejo</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER / NAVBAR STICKY
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      
+      <!-- Logotipo 101 Fintech -->
+      <a href="#" class="brand-logo" aria-label="101 Fintech - Inicio">
+        <img src="assets/svg/logo_101fintech.svg" alt="101 Fintech Logo" width="178" height="41">
+      </a>
+
+      <!-- Menú de Navegación Principal -->
+      <nav class="nav-menu" id="navMenu" aria-label="Navegación principal">
+        <ul class="nav-list">
+          
+          <!-- Inicio (Activo) -->
+          <li class="nav-item">
+            <a href="#inicio" class="nav-link active">Inicio</a>
+          </li>
+
+          <!-- Dropdown: Productos -->
+          <li class="nav-item has-dropdown">
+            <button class="nav-link dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              Productos <span class="dropdown-arrow">▾</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-products" role="menu">
+              
+              <!-- Producto 1: Tarjeta 101 -->
+              <a href="#tarjeta" class="dropdown-product-item" role="menuitem">
+                <div class="product-icon">💳</div>
+                <div class="product-info">
+                  <h4>Tarjeta de Crédito 101</h4>
+                  <p>$0 cuota de manejo de por vida, contactless y beneficios Visa.</p>
+                </div>
+              </a>
+
+              <!-- Producto 2: Crédito Digital -->
+              <a href="#credito" class="dropdown-product-item" role="menuitem">
+                <div class="product-icon">⚡</div>
+                <div class="product-info">
+                  <h4>Crédito de Libre Inversión</h4>
+                  <p>Aprobación 100% digital en minutos con desembolso directo.</p>
+                </div>
+              </a>
+
+              <!-- Producto 3: Simulador Financiero -->
+              <a href="#simulador" class="dropdown-product-item" role="menuitem">
+                <div class="product-icon">📊</div>
+                <div class="product-info">
+                  <h4>Simulador de Crédito</h4>
+                  <p>Calcula cuotas y tasas transparentes sin cobros ocultos.</p>
+                </div>
+              </a>
+
+              <!-- Producto 4: 101 Pay -->
+              <a href="#pay" class="dropdown-product-item" role="menuitem">
+                <div class="product-icon">📱</div>
+                <div class="product-info">
+                  <h4>101 Pay & Billetera</h4>
+                  <p>Pagos QR inmediatos y transferencias bancarias a costo cero.</p>
+                </div>
+              </a>
+
+              <!-- Pie del dropdown -->
+              <div class="dropdown-footer">
+                <span>¿Buscas soluciones corporativas?</span>
+                <a href="#empresas">Ver 101 Empresas →</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Nosotros -->
+          <li class="nav-item">
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+          </li>
+
+          <!-- Cultura Fintech -->
+          <li class="nav-item">
+            <a href="#cultura" class="nav-link">Cultura Fintech</a>
+          </li>
+
+          <!-- Contáctenos -->
+          <li class="nav-item">
+            <a href="#contacto" class="nav-link">Contáctenos</a>
+          </li>
+
+          <!-- Simula tu crédito -->
+          <li class="nav-item">
+            <a href="#simulador" class="nav-link">Simula tu crédito</a>
+          </li>
+
+        </ul>
+
+        <!-- Acciones del Header en versión móvil -->
+        <div class="header-actions">
+          
+          <!-- Botón CTA: Pide tu tarjeta 101 -->
+          <a href="#solicitar" class="btn btn-primary btn-pill btn-card-order">
+            <svg class="card-icon-svg" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.75" y="0.75" width="15.5" height="14.5" rx="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <line x1="0.75" y1="5.2" x2="16.25" y2="5.2" stroke="currentColor" stroke-width="1.3"/>
+              <rect x="2.8" y="8.2" width="3.5" height="2.8" rx="0.6" fill="currentColor"/>
+              <path d="M18 5C19.2 6.3 19.2 9.7 18 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20.2 3C22 5.2 22 10.8 20.2 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Pide tu tarjeta 101</span>
+          </a>
+
+          <!-- Dropdown: Ingresar -->
+          <div class="dropdown-wrapper has-dropdown">
+            <button class="btn btn-outline btn-pill btn-login dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+              <img src="assets/svg/ico_user.svg" alt="Usuario" width="18" height="20">
+              <span>Ingresar</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-login" role="menu">
+              <a href="#portal-personas" class="login-item" role="menuitem">
+                <div class="login-item-icon">👤</div>
+                <div class="login-item-text">
+                  <h4>Portal Personas</h4>
+                  <p>Gestiona tu tarjeta y créditos</p>
+                </div>
+              </a>
+              <a href="#portal-empresas" class="login-item" role="menuitem">
+                <div class="login-item-icon">🏢</div>
+                <div class="login-item-text">
+                  <h4>Portal Empresas</h4>
+                  <p>Nómina y transferencias corporativas</p>
+                </div>
+              </a>
+              <div class="login-register-prompt">
+                ¿No eres cliente? <a href="#solicitar">Regístrate</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selector de Idioma -->
+          <div class="lang-selector has-dropdown" id="langSelector">
+            <button class="lang-btn dropdown-trigger" aria-label="Cambiar idioma" aria-expanded="false">
+              <img src="assets/svg/icon_bandera_col.svg" alt="Colombia" class="lang-flag current-flag" width="22" height="22">
+              <span class="current-lang-code">ES</span>
+            </button>
+            <div class="dropdown-menu lang-dropdown" role="menu">
+              <button class="lang-option active" data-lang="es" role="menuitem">
+                <img src="assets/svg/icon_bandera_col.svg" alt="Colombia" width="18" height="18">
+                <span>Español</span>
+              </button>
+              <button class="lang-option" data-lang="en" role="menuitem">
+                <img src="assets/svg/icon_bandera_usa.svg" alt="USA" width="18" height="18">
+                <span>English</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+
+      <!-- Botón de Menú Hamburguesa para Móvil -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION CON CARRUSEL DE BANNERS
+       ========================================================================== -->
+  <main>
+    <section class="hero-section" id="inicio" aria-label="Banners Principales 101 Fintech">
+      <div class="carousel-container">
+        
+        <!-- Diapositivas del Carrusel -->
+        <div class="carousel-slides">
+          
+          <!-- SLIDE 1 (Exactamente como se ve en la captura de referencia) -->
+          <article class="carousel-slide slide-1 active" aria-label="1 de 5: La tarjeta de crédito 101">
+            <div class="slide-bg"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content">
+                <h1 class="hero-title">
+                  <span class="title-block">La tarjeta</span>
+                  <span class="title-block">de crédito</span>
+                </h1>
+                <p class="hero-subtitle">Tu pase libre a lo que quieres,</p>
+                <p class="hero-highlight"><strong>$0 cuota de manejo</strong></p>
+                <div class="hero-cta-box">
+                  <a href="#solicitar" class="btn btn-accent btn-pill btn-hero">
+                    <span>Quiero mi tarjeta</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SLIDE 2: Crédito 100% Digital -->
+          <article class="carousel-slide slide-2" aria-label="2 de 5: Crédito 100% Digital">
+            <div class="slide-bg"></div>
+            <div class="slide-pattern" aria-hidden="true"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content">
+                <h2 class="hero-title">
+                  <span class="title-block">Crédito 100%</span>
+                  <span class="title-block">digital y ágil</span>
+                </h2>
+                <p class="hero-subtitle">Desembolso inmediato en tu cuenta bancaria,</p>
+                <p class="hero-highlight"><strong>Sin papeleo, sin filas ni trámites</strong></p>
+                <div class="hero-cta-box">
+                  <a href="#simulador" class="btn btn-accent btn-pill btn-hero">
+                    <span>Solicitar mi crédito</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SLIDE 3: Tasas Transparentes -->
+          <article class="carousel-slide slide-3" aria-label="3 de 5: Simulación y Tasas Justas">
+            <div class="slide-bg"></div>
+            <div class="slide-pattern" aria-hidden="true"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content">
+                <h2 class="hero-title">
+                  <span class="title-block">Simula tu cuota</span>
+                  <span class="title-block">en segundos</span>
+                </h2>
+                <p class="hero-subtitle">Transparencia absoluta en plazos y tasas,</p>
+                <p class="hero-highlight"><strong>Siempre sabes lo que pagas, sin sorpresas</strong></p>
+                <div class="hero-cta-box">
+                  <a href="#simulador" class="btn btn-accent btn-pill btn-hero">
+                    <span>Probar simulador</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SLIDE 4: Tu dinero seguro -->
+          <article class="carousel-slide slide-4" aria-label="4 de 5: Tu dinero seguro en la app">
+            <div class="slide-bg"></div>
+            <div class="slide-pattern" aria-hidden="true"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content">
+                <h2 class="hero-title">
+                  <span class="title-block">Control total</span>
+                  <span class="title-block">en tu celular</span>
+                </h2>
+                <p class="hero-subtitle">Notificaciones en vivo, bloqueo y desbloqueo,</p>
+                <p class="hero-highlight"><strong>Seguridad biométrica de última generación</strong></p>
+                <div class="hero-cta-box">
+                  <a href="#pay" class="btn btn-accent btn-pill btn-hero">
+                    <span>Descubrir la App</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SLIDE 5: Cultura Fintech -->
+          <article class="carousel-slide slide-5" aria-label="5 de 5: Cultura Fintech para ti">
+            <div class="slide-bg"></div>
+            <div class="slide-pattern" aria-hidden="true"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content">
+                <h2 class="hero-title">
+                  <span class="title-block">Cultura Fintech</span>
+                  <span class="title-block">para tu futuro</span>
+                </h2>
+                <p class="hero-subtitle">Aprende finanzas inteligentes y sin rodeos,</p>
+                <p class="hero-highlight"><strong>Consejos prácticos para multiplicar tu dinero</strong></p>
+                <div class="hero-cta-box">
+                  <a href="#cultura" class="btn btn-accent btn-pill btn-hero">
+                    <span>Explorar artículos</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CONTROLES DEL CARRUSEL (Cápsula centrada exactamente como en la imagen) -->
+        <div class="carousel-controls-wrapper">
+          
+          <!-- Flecha Anterior -->
+          <button class="carousel-arrow carousel-arrow-prev" id="prevSlide" aria-label="Banner anterior">
+            <img src="assets/svg/arrow_prev.svg" alt="Anterior" width="42" height="42">
+          </button>
+
+          <!-- Cápsula con Botón Pausa/Play y 5 Puntos -->
+          <div class="carousel-pill-capsule">
+            
+            <!-- Botón Pausa / Reanudar -->
+            <button class="btn-pause-toggle" id="pausePlayBtn" aria-label="Pausar reproducción automática">
+              <img src="assets/svg/Elipse%2079.svg" alt="Pausar" class="icon-pause" width="38" height="38">
+              <svg class="icon-play" viewBox="0 0 45 45" width="38" height="38">
+                <circle cx="22.5" cy="22.5" r="21.5" stroke="#ffffff" stroke-width="1.22" fill="none"/>
+                <polygon points="18,14 31,22.5 18,31" fill="#ffffff"/>
+              </svg>
+            </button>
+
+            <div class="pill-divider" aria-hidden="true"></div>
+
+            <!-- 5 Indicadores de Diapositiva -->
+            <div class="carousel-dots" role="tablist" aria-label="Diapositivas del banner">
+              <button class="dot active" data-index="0" role="tab" aria-selected="true" aria-label="Ir a diapositiva 1"></button>
+              <button class="dot" data-index="1" role="tab" aria-selected="false" aria-label="Ir a diapositiva 2"></button>
+              <button class="dot" data-index="2" role="tab" aria-selected="false" aria-label="Ir a diapositiva 3"></button>
+              <button class="dot" data-index="3" role="tab" aria-selected="false" aria-label="Ir a diapositiva 4"></button>
+              <button class="dot" data-index="4" role="tab" aria-selected="false" aria-label="Ir a diapositiva 5"></button>
+            </div>
+
+          </div>
+
+          <!-- Flecha Siguiente -->
+          <button class="carousel-arrow carousel-arrow-next" id="nextSlide" aria-label="Siguiente banner">
+            <img src="assets/svg/arrow_next.svg" alt="Siguiente" width="42" height="42">
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         BOTONES FLOTANTES LATERALES (Scroll to Top & WhatsApp)
+         ========================================================================== -->
+    <aside class="floating-actions" aria-label="Acciones rápidas">
+      <!-- Botón Scroll Up (Chevron hacia arriba) -->
+      <button class="btn-scroll-top" id="scrollTopBtn" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </button>
+
+      <!-- Botón WhatsApp -->
+      <a href="https://api.whatsapp.com/send?phone=573001010101&text=Hola%20101%20Fintech,%20deseo%20m%C3%A1s%20informaci%C3%B3n" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-whatsapp" 
+         aria-label="Chatear por WhatsApp">
+        <img src="assets/svg/btn_wp.svg" alt="WhatsApp 101 Fintech" width="60" height="60">
+      </a>
+    </aside>
+
+    <!-- ==========================================================================
+         SECCIÓN DE PRODUCTOS DESTACADOS
+         ========================================================================== -->
+    <section class="section section-bg-light" id="productos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Soluciones 101</span>
+          <h2 class="section-title">Finanzas diseñadas para tu libertad</h2>
+          <p class="section-description">Olvídate de las letras pequeñas y las filas bancarias. Accede a herramientas transparentes para alcanzar lo que sueñas.</p>
+        </div>
+
+        <div class="products-grid">
+          
+          <!-- Card 1 -->
+          <article class="product-card">
+            <div class="card-top">
+              <div class="card-icon-badge">💳</div>
+              <h3 class="card-title">Tarjeta 101 Visa</h3>
+              <p class="card-text">Tu tarjeta de crédito física y virtual con tecnología contactless internacional y $0 cuota de manejo.</p>
+              <ul class="card-features">
+                <li>Sin comisiones ocultas</li>
+                <li>Cashback en comercios aliados</li>
+                <li>Control total desde tu smartphone</li>
+              </ul>
+            </div>
+            <a href="#solicitar" class="btn btn-outline btn-pill">Pedir Tarjeta</a>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="product-card">
+            <div class="card-top">
+              <div class="card-icon-badge">⚡</div>
+              <h3 class="card-title">Crédito Digital</h3>
+              <p class="card-text">Préstamos personales con aprobación express. Simula tu cuota y recibe el dinero en tu cuenta bancaria.</p>
+              <ul class="card-features">
+                <li>Aprobación en menos de 5 minutos</li>
+                <li>Plazos flexibles de 6 a 48 meses</li>
+                <li>Tasas justas y competitivas</li>
+              </ul>
+            </div>
+            <a href="#simulador" class="btn btn-outline btn-pill">Simular Crédito</a>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="product-card">
+            <div class="card-top">
+              <div class="card-icon-badge">📱</div>
+              <h3 class="card-title">101 Pay & App</h3>
+              <p class="card-text">Billetera electrónica para pagar tus servicios, transferir dinero sin costo y administrar tus productos 24/7.</p>
+              <ul class="card-features">
+                <li>Transferencias interbancarias gratis</li>
+                <li>Pagos QR al instante</li>
+                <li>Seguridad con reconocimiento facial</li>
+              </ul>
+            </div>
+            <a href="#pay" class="btn btn-outline btn-pill">Conocer Más</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN SIMULADOR DE CRÉDITO INTERACTIVO
+         ========================================================================== -->
+    <section class="section section-bg-white" id="simulador">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Transparencia Total</span>
+          <h2 class="section-title">Simula tu crédito en tiempo real</h2>
+          <p class="section-description">Ajusta el monto y plazo que necesitas. Sin compromiso y sin afectar tu historial crediticio.</p>
+        </div>
+
+        <div class="simulator-box">
+          
+          <!-- Controles de Simulación -->
+          <div class="sim-controls">
+            <!-- Monto -->
+            <div class="sim-slider-group">
+              <div class="sim-label-row">
+                <label for="simAmount" class="sim-label">¿Cuánto dinero necesitas?</label>
+                <span class="sim-value-badge" id="amountDisplay">$ 5.000.000</span>
+              </div>
+              <input type="range" id="simAmount" class="sim-range" min="500000" max="25000000" step="250000" value="5000000">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#9ca3af; margin-top:6px;">
+                <span>$ 500.000</span>
+                <span>$ 25.000.000</span>
+              </div>
+            </div>
+
+            <!-- Plazo -->
+            <div class="sim-slider-group">
+              <div class="sim-label-row">
+                <label for="simTerm" class="sim-label">¿En cuántos meses deseas pagar?</label>
+                <span class="sim-value-badge" id="termDisplay">24 meses</span>
+              </div>
+              <input type="range" id="simTerm" class="sim-range" min="6" max="48" step="6" value="24">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#9ca3af; margin-top:6px;">
+                <span>6 meses</span>
+                <span>48 meses</span>
+              </div>
+            </div>
+
+            <p style="font-size:0.8rem; color:#6b7280; line-height:1.4;">
+              * Valores aproximados con fines ilustrativos. Tasa de interés sujeta a perfil y políticas de riesgo de 101 Fintech.
+            </p>
+          </div>
+
+          <!-- Resultado de Simulación -->
+          <div class="sim-result-card">
+            <div class="sim-result-header">
+              <h4>Cuota mensual estimada</h4>
+              <div class="sim-calculated-payment" id="monthlyPayment">$ 257.800</div>
+              <div class="sim-rate-info">Tasa E.A. desde 23.5% | Cuota fija mensual</div>
+            </div>
+
+            <div class="sim-details-list">
+              <div class="sim-detail-row">
+                <span>Total estimado a pagar:</span>
+                <strong id="totalPayment">$ 6.187.200</strong>
+              </div>
+              <div class="sim-detail-row">
+                <span>Intereses proyectados:</span>
+                <strong id="interestPayment">$ 1.187.200</strong>
+              </div>
+              <div class="sim-detail-row">
+                <span>Estudio de crédito:</span>
+                <strong>$ 0 COP (Gratis)</strong>
+              </div>
+            </div>
+
+            <a href="#solicitar" class="btn btn-accent btn-pill" style="width:100%; font-weight:700;">
+              Solicitar este crédito →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Columna Marca -->
+        <div class="footer-brand">
+          <img src="assets/svg/logo_101fintech.svg" alt="101 Fintech Logo" style="filter: brightness(0) invert(1); height: 36px; margin-bottom: 12px;">
+          <p>La tecnología financiera que te conecta con tus metas. Sin cuota de manejo, sin letra pequeña y con seguridad de vanguardia.</p>
+        </div>
+
+        <!-- Columna Productos -->
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <ul class="footer-links">
+            <li><a href="#tarjeta">Tarjeta de Crédito 101</a></li>
+            <li><a href="#credito">Crédito de Libre Inversión</a></li>
+            <li><a href="#simulador">Simulador Financiero</a></li>
+            <li><a href="#pay">101 Pay Billetera</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna Empresa -->
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="#nosotros">Sobre Nosotros</a></li>
+            <li><a href="#cultura">Cultura Fintech</a></li>
+            <li><a href="#seguridad">Seguridad y Privacidad</a></li>
+            <li><a href="#contacto">Canales de Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna Legal & Ayuda -->
+        <div class="footer-col">
+          <h4>Transparencia</h4>
+          <ul class="footer-links">
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Políticas de Privacidad</a></li>
+            <li><a href="#">Defensor del Consumidor</a></li>
+            <li><a href="#">Tasas y Tarifas</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Pie de página final -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 101 Fintech S.A.S. Todos los derechos reservados.</p>
+        <p>Vigilado por las autoridades financieras correspondientes. Bogotá, Colombia.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
