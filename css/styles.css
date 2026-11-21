@@ -1274,6 +1274,266 @@ ul {
   }
 }
 
+/* ==========================================================================
+   8.2. SECCIÓN TRAMIAPP GLOBAL (HOME)
+   Banner Full-Bleed con superposición de contenido a la derecha
+   ========================================================================== */
+.tramiapp-section {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  background-color: #080d17;
+  background-image: url('../assets/img/img_tramiapp_home_2.jpg');
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Capa de fondo con <img> y overlay oscuro */
+.tramiapp-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tramiapp-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+  min-width: 650px;
+  max-width: none;
+  object-fit: cover;
+  object-position: left center;
+  display: block;
+}
+
+/* Overlay que oscurece suavemente el centro y deja el lado derecho completamente oscuro */
+.tramiapp-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 13, 23, 0) 0%,
+    rgba(8, 13, 23, 0) 22%,
+    rgba(8, 13, 23, 0.45) 34%,
+    rgba(8, 13, 23, 0.88) 46%,
+    #080d17 56%,
+    #080d17 100%
+  );
+  pointer-events: none;
+}
+
+/* Contenedor centralizado */
+.tramiapp-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-max-width, 1360px);
+  margin: 0 auto;
+  padding: 80px 48px;
+}
+
+/* Grid de 2 columnas (50% / 50%) */
+.tramiapp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+/* Columna izquierda vacía para dejar visible la imagen de la mujer */
+.tramiapp-col-empty {
+  min-height: 1px;
+}
+
+/* Columna derecha: alineación vertical y sangría para calzar con la referencia */
+.tramiapp-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: clamp(24px, 4.5vw, 75px);
+}
+
+/* Bloque contenedor del contenido (ancho máx 400px) */
+.tramiapp-content-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Logotipo TramiApp Global (tamaño optimizado y reducido) */
+.tramiapp-logo {
+  display: block;
+  width: 195px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+}
+
+/* Primer párrafo destacado en blanco puro */
+.tramiapp-lead {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.45;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Segundo párrafo en blanco suave / gris muy claro */
+.tramiapp-desc {
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 400;
+  color: #E6E6E6;
+  line-height: 1.5;
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+
+/* Contenedor del Botón CTA */
+.tramiapp-cta-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Botón CTA Outline píldora transparente */
+.tramiapp-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  background-color: transparent;
+  border: 1.5px solid #FFFFFF;
+  color: #00E5B0;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.tramiapp-btn-arrow {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #00E5B0;
+  line-height: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto Hover del Botón CTA */
+.tramiapp-btn-cta:hover {
+  background-color: #00E5B0;
+  border-color: #00E5B0;
+  color: #14387F;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 229, 176, 0.4);
+}
+
+.tramiapp-btn-cta:hover .tramiapp-btn-arrow {
+  color: #14387F;
+  transform: translateX(4px);
+}
+
+.tramiapp-btn-cta:active {
+  transform: translateY(0);
+}
+
+.tramiapp-btn-cta:focus-visible {
+  outline: 2px solid #00E5B0;
+  outline-offset: 3px;
+}
+
+/* Adaptabilidad para resoluciones menores */
+@media (max-width: 991px) {
+  .tramiapp-section {
+    min-height: 600px;
+  }
+
+  .tramiapp-bg-img {
+    min-width: 550px;
+  }
+
+  .tramiapp-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(8, 13, 23, 0.1) 0%,
+      rgba(8, 13, 23, 0.5) 28%,
+      rgba(8, 13, 23, 0.92) 46%,
+      #080d17 58%,
+      #080d17 100%
+    );
+  }
+
+  .tramiapp-container {
+    padding: 60px 32px;
+  }
+
+  .tramiapp-grid {
+    grid-template-columns: 0.5fr 1fr;
+  }
+
+  .tramiapp-content-col {
+    padding-left: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tramiapp-section {
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .tramiapp-bg-img {
+    width: 100%;
+    min-width: 100%;
+    object-position: center top;
+  }
+
+  .tramiapp-overlay {
+    background: rgba(8, 13, 23, 0.86);
+  }
+
+  .tramiapp-container {
+    padding: 0 20px;
+  }
+
+  .tramiapp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tramiapp-col-empty {
+    display: none;
+  }
+
+  .tramiapp-content-col {
+    padding-left: 0;
+    background: rgba(8, 13, 23, 0.88);
+    padding: 32px 24px;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
 /* --------------------------------------------------------------------------
    9. SECCIONES COMPLEMENTARIAS DE VALOR (PRODUCTOS, BENEFICIOS, SIMULADOR)
    -------------------------------------------------------------------------- */
