@@ -512,50 +512,232 @@
     </section>
 
     <!-- ==========================================================================
-         SECCIÓN TRAMIAPP GLOBAL (Banner Full-Bleed con superposición a la derecha)
+         SECCIÓN TRAMIAPP GLOBAL (Diseño Dividido 50% / 50%)
          ========================================================================== -->
     <section class="tramiapp-section" id="tramiapp" aria-label="TramiApp Global">
       
-      <!-- Fondo fotográfico con transición a oscuro hacia la derecha -->
-      <div class="tramiapp-bg" aria-hidden="true">
-        <img src="assets/img/img_tramiapp_home_2.jpg" alt="" class="tramiapp-bg-img" loading="lazy">
-        <div class="tramiapp-overlay" aria-hidden="true"></div>
+      <!-- Columna izquierda (Fotografía 50% de ancho) -->
+      <div class="tramiapp-media-col">
+        <img src="assets/img/img_tramiapp_home_2.jpg" alt="TramiApp Global en comercio" class="tramiapp-photo" loading="lazy">
       </div>
 
-      <!-- Contenedor con Grid: mitad izquierda despejada, mitad derecha con contenido -->
-      <div class="tramiapp-container">
-        <div class="tramiapp-grid">
+      <!-- Columna derecha (Bloque sólido oscuro con contenido) -->
+      <div class="tramiapp-content-col">
+        <div class="tramiapp-content-box">
           
-          <!-- Columna Izquierda: Vacía para exhibir la mujer y ambiente -->
-          <div class="tramiapp-col-empty" aria-hidden="true"></div>
+          <!-- Logotipo TramiApp Global -->
+          <img src="assets/img/svg/home/lgo_tramiapp_global.svg" alt="TramiApp Global" class="tramiapp-logo" width="190" height="auto" loading="lazy">
 
-          <!-- Columna Derecha: Contenido TramiApp Global -->
-          <div class="tramiapp-content-col">
-            <div class="tramiapp-content-box">
-              
-              <!-- Logotipo TramiApp Global -->
-              <img src="assets/img/svg/home/lgo_tramiapp_global.svg" alt="TramiApp Global" class="tramiapp-logo" width="195" height="74" loading="lazy">
+          <!-- Primer párrafo destacado en blanco puro -->
+          <p class="tramiapp-lead">Ahora, cualquier comercio puede ser un agente de recaudo para procesar pagos de impuestos, multas de tránsito y servicios públicos.</p>
 
-              <!-- Primer párrafo destacado en blanco puro -->
-              <p class="tramiapp-lead">Ahora, cualquier comercio puede ser un agente de recaudo para procesar pagos de impuestos, multas de tránsito y servicios públicos.</p>
+          <!-- Segundo párrafo en gris claro -->
+          <p class="tramiapp-desc">Miles de establecimientos ya aceptan estas transacciones directamente desde un datáfono o celular.</p>
 
-              <!-- Segundo párrafo en blanco suave / gris muy claro -->
-              <p class="tramiapp-desc">Miles de establecimientos ya aceptan estas transacciones directamente desde un datáfono o celular.</p>
-
-              <!-- Botón CTA Outline -->
-              <div class="tramiapp-cta-wrapper">
-                <a href="#tramiapp" class="tramiapp-btn-cta">
-                  <span>Conoce TramiApp</span>
-                  <span class="tramiapp-btn-arrow" aria-hidden="true">›</span>
-                </a>
-              </div>
-
-            </div>
+          <!-- Botón CTA Outline -->
+          <div class="tramiapp-cta-wrapper">
+            <a href="#tramiapp" class="tramiapp-btn-cta">
+              <span>Conoce TramiApp</span>
+              <span class="tramiapp-btn-arrow" aria-hidden="true">›</span>
+            </a>
           </div>
 
         </div>
       </div>
 
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN PASARELA DE PAGO 101 FINTECH (Diseño Dividido 50% / 50%)
+         ========================================================================== -->
+    <section class="pasarela-section" id="pasarela" aria-label="Pasarela de Pago 101 Fintech">
+      
+      <!-- Columna izquierda (Bloque oscuro de contenido) -->
+      <div class="pasarela-content-col">
+        <div class="pasarela-content-box">
+          
+          <!-- Título principal en dos líneas -->
+          <h2 class="pasarela-title">Pasarela de Pago<br>101 Fintech</h2>
+
+          <!-- Primer párrafo descriptivo -->
+          <p class="pasarela-desc">Fácil de implementar y usar, integra los principales medios de pago electrónicos del mercado. Además, te ofrece información valiosa sobre el comportamiento de tus clientes para analizar oportunidades de negocio y optimizar tus decisiones.</p>
+
+          <!-- Segundo párrafo destacado -->
+          <p class="pasarela-highlight">Ofrecemos opciones de recaudo por PSE y tarjetas de crédito.</p>
+
+          <!-- Bloque de medios de pago (PSE | Tarjetas de crédito) -->
+          <div class="pasarela-methods">
+            <div class="pasarela-method-item">
+              <div class="pasarela-method-icon">
+                <img src="assets/img/svg/home/btn_pse.svg" alt="PSE" class="pasarela-method-img" width="40" height="40" loading="lazy">
+              </div>
+              <span class="pasarela-method-label">PSE</span>
+            </div>
+
+            <div class="pasarela-method-divider" aria-hidden="true"></div>
+
+            <div class="pasarela-method-item">
+              <div class="pasarela-method-icon">
+                <img src="assets/img/svg/home/icon_tc_white.svg" alt="Tarjetas de crédito" class="pasarela-method-img pasarela-icon-tc" width="54" height="35" loading="lazy">
+              </div>
+              <span class="pasarela-method-label">Tarjetas de<br>crédito</span>
+            </div>
+          </div>
+
+          <!-- Botón CTA Outline -->
+          <div class="pasarela-cta-wrapper">
+            <a href="#pasarela" class="pasarela-btn-cta">
+              <span>Conoce más</span>
+              <span class="pasarela-btn-arrow" aria-hidden="true">›</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Columna derecha (Fotografía + UI flotante animada) -->
+      <div class="pasarela-media-col">
+        <!-- Imagen base fotográfica -->
+        <img src="assets/img/img_pasarela_home.jpg" alt="Pasarela de Pago 101 Fintech en comercio" class="pasarela-photo" loading="lazy">
+
+        <!-- Capa exterior: Contenedor flotante con posición y transición de scroll -->
+        <div class="pasarela-floating-wrapper">
+          <!-- Capa interior: Imagen interactiva con levitación continua y sombra -->
+          <img src="assets/img/img_pasarela_home.png" alt="Pasarela 101 Fintech Móvil" class="pasarela-floating-ui" loading="lazy">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN NUESTROS ALIADOS (Bloque centrado sobre fondo gris claro)
+         ========================================================================== -->
+    <section class="aliados-section" id="aliados" aria-label="Nuestros aliados">
+      <div class="aliados-container">
+        
+        <!-- Título principal -->
+        <h2 class="aliados-title">Nuestros aliados</h2>
+
+        <!-- Descripción en dos líneas equilibradas -->
+        <p class="aliados-desc">Operamos con el respaldo de marcas líderes a nivel mundial para garantizar que cada una de tus transacciones sea 100% segura.</p>
+
+        <!-- Fila de logotipos de aliados (VISA, Credibanco, Coopcentral, Tigo) -->
+        <div class="aliados-logos-row">
+          <div class="aliados-logo-item">
+            <img src="assets/img/svg/home/lgo_visa.svg" alt="VISA" class="aliados-logo-img logo-visa" loading="lazy">
+          </div>
+          <div class="aliados-logo-item">
+            <img src="assets/img/svg/home/lgo_credibanco.svg" alt="Credibanco" class="aliados-logo-img logo-credibanco" loading="lazy">
+          </div>
+          <div class="aliados-logo-item">
+            <img src="assets/img/svg/home/lgo_coopcentral.svg" alt="Banco Cooperativo Coopcentral" class="aliados-logo-img logo-coopcentral" loading="lazy">
+          </div>
+          <div class="aliados-logo-item">
+            <img src="assets/img/svg/home/lgo_tigo.svg" alt="Tigo Une" class="aliados-logo-img logo-tigo" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN PREGUNTAS FRECUENTES (Acordeón Interactivo sobre fondo oscuro)
+         ========================================================================== -->
+    <section class="faq-section" id="faq" aria-label="Preguntas frecuentes">
+      <div class="faq-container">
+        
+        <!-- Columna Izquierda: Encabezado -->
+        <div class="faq-header-col">
+          <span class="faq-eyebrow">Preguntas frecuentes</span>
+          <h2 class="faq-title">Todo lo que necesitas saber sobre 101 Fintech.</h2>
+        </div>
+
+        <!-- Columna Derecha: Acordeón Interactivo -->
+        <div class="faq-accordion-col">
+          <div class="faq-accordion" role="region" aria-label="Acordeón de preguntas frecuentes">
+            
+            <!-- Pregunta 1 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-1" id="faq-q-1">
+                <span class="faq-question-text">1. ¿Qué es una Fintech?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-1" role="region" aria-labelledby="faq-q-1">
+                <div class="faq-answer-inner">
+                  <p>Es una empresa de tecnología financiera que utiliza innovación digital para ofrecer servicios financieros más ágiles, accesibles, transparentes y seguros que la banca tradicional, adaptados a las necesidades reales de personas y comercios.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-2" id="faq-q-2">
+                <span class="faq-question-text">2. ¿Qué tipo de soluciones ofrece 101 Fintech?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-2" role="region" aria-labelledby="faq-q-2">
+                <div class="faq-answer-inner">
+                  <p>Ofrecemos un ecosistema financiero integral que incluye nuestra Tarjeta de Crédito Visa sin cuota de manejo, Pasarela de Pago para recaudos electrónicos con PSE y tarjetas, y TramiApp Global, nuestra red que convierte cualquier comercio en corresponsal para el pago de impuestos, multas y servicios públicos.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-3" id="faq-q-3">
+                <span class="faq-question-text">3. ¿Necesito tener una empresa grande para usar la pasarela de pagos?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-3" role="region" aria-labelledby="faq-q-3">
+                <div class="faq-answer-inner">
+                  <p>No. Nuestra pasarela de pagos está diseñada para adaptarse tanto a emprendedores y comercios en crecimiento como a grandes empresas, con una integración rápida, sencilla y sin requisitos complejos para empezar a recibir pagos en línea.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-4" id="faq-q-4">
+                <span class="faq-question-text">4. ¿La Tarjeta de Crédito 101 Fintech realmente no tiene cuota de manejo?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-4" role="region" aria-labelledby="faq-q-4">
+                <div class="faq-answer-inner">
+                  <p>Así es, $0 de cuota de manejo siempre y sin condiciones ocultas. Además, cuentas con una de las tasas de interés más bajas del mercado, aceptación mundial en comercios físicos y digitales, y control total para congelar o gestionar tu tarjeta desde la app.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-5" id="faq-q-5">
+                <span class="faq-question-text">5. ¿Qué tan seguro es realizar transacciones con sus plataformas?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-5" role="region" aria-labelledby="faq-q-5">
+                <div class="faq-answer-inner">
+                  <p>Totalmente seguro. Operamos bajo estrictos estándares internacionales de cifrado y protección de datos, con el respaldo directo de aliados líderes en el sector financiero y tecnológico como Visa, Credibanco, Banco Cooperativo Coopcentral y Tigo Une.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-6" id="faq-q-6">
+                <span class="faq-question-text">6. ¿Cómo puedo recibir asesoría personalizada?</span>
+                <span class="faq-toggle-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="faq-answer" id="faq-ans-6" role="region" aria-labelledby="faq-q-6">
+                <div class="faq-answer-inner">
+                  <p>Puedes escribirnos directamente a través de nuestro formulario de contacto al final de esta página o comunicarte por nuestros canales digitales de atención. Uno de nuestros especialistas te guiará paso a paso según el producto o solución que necesites.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- ==========================================================================
@@ -639,58 +821,113 @@
   </main>
 
   <!-- ==========================================================================
-       FOOTER
+       FOOTER PRINCIPAL
        ========================================================================== -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-top">
+  <footer class="site-footer" id="contacto" aria-label="Pie de página">
+    <div class="footer-container">
+      
+      <!-- Bloque Superior (Grid de 5 columnas) -->
+      <div class="footer-top-grid">
         
-        <!-- Columna Marca -->
-        <div class="footer-brand">
-          <img src="assets/svg/logo_101fintech.svg" alt="101 Fintech Logo" style="filter: brightness(0) invert(1); height: 36px; margin-bottom: 12px;">
-          <p>La tecnología financiera que te conecta con tus metas. Sin cuota de manejo, sin letra pequeña y con seguridad de vanguardia.</p>
+        <!-- Columna 1 — Marca -->
+        <div class="footer-col footer-col-brand">
+          <a href="#inicio" class="footer-logo-link" aria-label="101 Fintech Inicio">
+            <img src="assets/img/svg/logo_101fintech_white.svg" alt="101 Fintech" class="footer-brand-logo" width="165" height="auto" loading="lazy">
+          </a>
         </div>
 
-        <!-- Columna Productos -->
+        <!-- Columna 2 — Contáctenos -->
+        <div class="footer-col footer-col-contact">
+          <h4 class="footer-col-title">Contáctenos</h4>
+          <ul class="footer-links-list">
+            <li><span class="footer-static-text">Atención al cliente</span></li>
+            <li><a href="tel:6045606111" class="footer-link">Tel. (604) 5606111</a></li>
+            <li><a href="https://wa.me/573017767542" target="_blank" rel="noopener" class="footer-link">Móvil +57 301 776 7542</a></li>
+            <li>
+              <span class="footer-schedule-text">
+                Horario: Lunes a Viernes:<br>
+                8.00 a.m. a 5.30 p.m.
+              </span>
+            </li>
+          </ul>
+
+          <!-- Sub-bloque "Síguenos" -->
+          <div class="footer-follow-block">
+            <h5 class="footer-follow-title">Síguenos</h5>
+            <div class="footer-social-row">
+              <a href="https://facebook.com" class="footer-social-btn" aria-label="Facebook" target="_blank" rel="noopener">
+                <img src="assets/img/svg/ico_facebook.svg" alt="Facebook" width="38" height="38" loading="lazy">
+              </a>
+              <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram" target="_blank" rel="noopener">
+                <img src="assets/img/svg/ico_instagram.svg" alt="Instagram" width="38" height="38" loading="lazy">
+              </a>
+              <a href="https://whatsapp.com" class="footer-social-btn" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <img src="assets/img/svg/ico_whatsAppsvg.svg" alt="WhatsApp" width="38" height="38" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna 3 — Empresa -->
         <div class="footer-col">
-          <h4>Productos</h4>
-          <ul class="footer-links">
-            <li><a href="#tarjeta">Tarjeta de Crédito 101</a></li>
-            <li><a href="#credito">Crédito de Libre Inversión</a></li>
-            <li><a href="#simulador">Simulador Financiero</a></li>
-            <li><a href="#pay">101 Pay Billetera</a></li>
+          <h4 class="footer-col-title">Empresa</h4>
+          <ul class="footer-links-list">
+            <li><a href="#empresa" class="footer-link">¿Quiénes somos?</a></li>
+            <li><a href="#faq" class="footer-link">Preguntas frecuentes</a></li>
+            <li><a href="#comercios" class="footer-link">Comercios</a></li>
           </ul>
         </div>
 
-        <!-- Columna Empresa -->
+        <!-- Columna 4 — Productos -->
         <div class="footer-col">
-          <h4>Empresa</h4>
-          <ul class="footer-links">
-            <li><a href="#nosotros">Sobre Nosotros</a></li>
-            <li><a href="#cultura">Cultura Fintech</a></li>
-            <li><a href="#seguridad">Seguridad y Privacidad</a></li>
-            <li><a href="#contacto">Canales de Contacto</a></li>
+          <h4 class="footer-col-title">Productos</h4>
+          <ul class="footer-links-list">
+            <li><a href="#tarjeta" class="footer-link">Tarjeta de crédito</a></li>
+            <li><a href="#tramiapp" class="footer-link">TramiApp Global</a></li>
+            <li><a href="#pasarela" class="footer-link">Pasarela de pago</a></li>
           </ul>
         </div>
 
-        <!-- Columna Legal & Ayuda -->
+        <!-- Columna 5 — Transparencia -->
         <div class="footer-col">
-          <h4>Transparencia</h4>
-          <ul class="footer-links">
-            <li><a href="#">Términos y Condiciones</a></li>
-            <li><a href="#">Políticas de Privacidad</a></li>
-            <li><a href="#">Defensor del Consumidor</a></li>
-            <li><a href="#">Tasas y Tarifas</a></li>
+          <h4 class="footer-col-title">Transparencia</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" class="footer-link">Política de datos Tarjeta de crédito</a></li>
+            <li><a href="#" class="footer-link">Política de datos Pasarela de pagos</a></li>
+            <li><a href="#" class="footer-link">Consultas y reclamos de datos</a></li>
+            <li><a href="#" class="footer-link">Condiciones de uso</a></li>
+            <li><a href="#" class="footer-link">Aviso de privacidad</a></li>
+            <li><a href="#" class="footer-link">Tarifas</a></li>
+            <li>
+              <a href="#" class="footer-link footer-link-sarlaft">
+                Política SARLAFT<br>
+                <span class="footer-sarlaft-date">(Fecha de Publicación: 14/07/2026)</span>
+              </a>
+            </li>
           </ul>
         </div>
 
       </div>
 
-      <!-- Pie de página final -->
-      <div class="footer-bottom">
-        <p>&copy; 2026 101 Fintech S.A.S. Todos los derechos reservados.</p>
-        <p>Vigilado por las autoridades financieras correspondientes. Bogotá, Colombia.</p>
+      <!-- Bloque Intermedio (Descarga de App — Centrado) -->
+      <div class="footer-app-block">
+        <h4 class="footer-app-title">Descarga la app</h4>
+        <div class="footer-app-badges">
+          <a href="#" class="footer-app-badge-link" aria-label="Descargar en Google Play">
+            <img src="assets/img/svg/lgo_google_play.svg" alt="Disponible en Google Play" class="footer-app-badge-img" height="44" loading="lazy">
+          </a>
+          <a href="#" class="footer-app-badge-link" aria-label="Descargar en App Store">
+            <img src="assets/img/svg/lgo_app_store.svg" alt="Consíguelo en el App Store" class="footer-app-badge-img" height="44" loading="lazy">
+          </a>
+        </div>
       </div>
+
+      <!-- Línea Divisoria y Copyright -->
+      <hr class="footer-divider">
+      <div class="footer-bottom-bar">
+        <p class="footer-copyright">&copy; 2026 101 Fintech S.A.S. Todos los derechos reservados.</p>
+      </div>
+
     </div>
   </footer>
 

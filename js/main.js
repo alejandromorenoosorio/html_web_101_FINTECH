@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguageSelector();
   initScrollTop();
   initCreditSimulator();
+  initScrollAnimations();
+  initFaqAccordion();
 });
 
 /* ==========================================================================
@@ -390,4 +392,81 @@ function initCreditSimulator() {
   amountSlider.addEventListener('input', updateSimulation);
   termSlider.addEventListener('input', updateSimulation);
   updateSimulation();
+}
+
+/* ==========================================================================
+   8. ANIMACIONES AL SCROLL (INTERSECTION OBSERVER)
+   ========================================================================== */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.pasarela-floating-wrapper');
+  if (!animatedElements.length) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    animatedElements.forEach((el) => observer.observe(el));
+  } else {
+    animatedElements.forEach((el) => el.classList.add('is-visible'));
+  }
+}
+
+/* ==========================================================================
+   9. ACORDEÓN DE PREGUNTAS FRECUENTES (INTERACCIÓN EXCLUSIVA)
+   ========================================================================== */
+function initFaqAccordion() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item) => {
+    const btn = item.querySelector('.faq-question-btn');
+    const answer = item.querySelector('.faq-answer');
+    if (!btn || !answer) return;
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // Cerrar cualquier otra pregunta abierta (acordeón exclusivo)
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item && otherItem.classList.contains('active')) {
+          otherItem.classList.remove('active');
+          const otherBtn = otherItem.querySelector('.faq-question-btn');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherAnswer) otherAnswer.style.maxHeight = null;
+        }
+      });
+
+      // Alternar estado de la pregunta seleccionada
+      if (isExpanded) {
+        item.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Ajustar altura dinámica si cambia el tamaño de pantalla mientras está abierta una respuesta
+  window.addEventListener('resize', () => {
+    const activeItem = document.querySelector('.faq-item.active');
+    if (activeItem) {
+      const activeAnswer = activeItem.querySelector('.faq-answer');
+      if (activeAnswer) {
+        activeAnswer.style.maxHeight = activeAnswer.scrollHeight + 'px';
+      }
+    }
+  });
 }
