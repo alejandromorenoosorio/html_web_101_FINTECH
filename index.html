@@ -685,7 +685,7 @@
             <!-- Pregunta 3 -->
             <div class="faq-item">
               <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-3" id="faq-q-3">
-                <span class="faq-question-text">3. ¿Necesito tener una empresa grande para usar la pasarela de pagos?</span>
+                <span class="faq-question-text">3. ¿Necesito una empresa grande para usar la pasarela?</span>
                 <span class="faq-toggle-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer" id="faq-ans-3" role="region" aria-labelledby="faq-q-3">
@@ -698,7 +698,7 @@
             <!-- Pregunta 4 -->
             <div class="faq-item">
               <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-4" id="faq-q-4">
-                <span class="faq-question-text">4. ¿La Tarjeta de Crédito 101 Fintech realmente no tiene cuota de manejo?</span>
+                <span class="faq-question-text">4. ¿La Tarjeta de Crédito 101 Fintech tiene cuota de manejo?</span>
                 <span class="faq-toggle-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer" id="faq-ans-4" role="region" aria-labelledby="faq-q-4">
@@ -711,7 +711,7 @@
             <!-- Pregunta 5 -->
             <div class="faq-item">
               <button class="faq-question-btn" type="button" aria-expanded="false" aria-controls="faq-ans-5" id="faq-q-5">
-                <span class="faq-question-text">5. ¿Qué tan seguro es realizar transacciones con sus plataformas?</span>
+                <span class="faq-question-text">5. ¿Es seguro realizar transacciones con ustedes?</span>
                 <span class="faq-toggle-icon" aria-hidden="true">+</span>
               </button>
               <div class="faq-answer" id="faq-ans-5" role="region" aria-labelledby="faq-q-5">
@@ -751,70 +751,258 @@
           <p class="section-description">Ajusta el monto y plazo que necesitas. Sin compromiso y sin afectar tu historial crediticio.</p>
         </div>
 
+        <!-- Caja de Controles del Simulador -->
         <div class="simulator-box">
+          <div class="sim-controls-grid">
+            
+            <!-- Columna 1: Tipo de Transacción y Monto -->
+            <div class="sim-control-col">
+              
+              <!-- Tipo de Transacción -->
+              <div class="sim-field-group">
+                <label for="simTransactionType" class="sim-field-label">Tipo de Transacción</label>
+                <div class="sim-select-wrapper">
+                  <select id="simTransactionType" class="sim-select" aria-label="Tipo de Transacción">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Compra Nacional">Compra Nacional</option>
+                    <option value="Compra Internacional">Compra Internacional</option>
+                    <option value="Avance">Avance</option>
+                  </select>
+                  <span class="sim-select-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 6 15 12 9 18"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Monto -->
+              <div class="sim-slider-group">
+                <div class="sim-label-row">
+                  <label for="simAmount" class="sim-label">¿Cuánto dinero necesitas?</label>
+                  <span class="sim-value-badge" id="amountDisplay">$ 5.000.000</span>
+                </div>
+                <input type="range" id="simAmount" class="sim-range" min="500000" max="25000000" step="50000" value="5000000">
+                <div class="sim-range-limits">
+                  <span>$ 500.000</span>
+                  <span>$ 25.000.000</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Columna 2: Plazo y Botón Calcular -->
+            <div class="sim-control-col">
+              
+              <!-- Plazo -->
+              <div class="sim-slider-group">
+                <div class="sim-label-row">
+                  <label for="simTerm" class="sim-label">¿En cuántos meses deseas pagar?</label>
+                  <span class="sim-value-badge" id="termDisplay">60 meses</span>
+                </div>
+                <input type="range" id="simTerm" class="sim-range" min="1" max="60" step="1" value="60">
+                <div class="sim-range-limits">
+                  <span>1 mes</span>
+                  <span>60 meses</span>
+                </div>
+              </div>
+
+              <!-- Botón Calcular Crédito -->
+              <div class="sim-action-btn-group">
+                <button type="button" id="btnCalcularCredito" class="btn-calcular-credito">
+                  Calcular Crédito
+                </button>
+              </div>
+
+              <p class="sim-disclaimer-text">
+                * Valores aproximados con fines ilustrativos. Tasa fija 19.99% E.A. con seguro de vida deudor ($780/mes por cada millón).
+              </p>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bloque de Resultados Detallados (Oculto inicialmente, se muestra al pulsar "Calcular Crédito") -->
+        <div id="simulador-resultados-detalle" class="simulador-resultados-detalle">
+
+          <!-- Cuadrícula de 7 Tarjetas de Resumen Financiero -->
+          <div class="sim-results-wrapper" id="simResultsWrapper">
           
-          <!-- Controles de Simulación -->
-          <div class="sim-controls">
-            <!-- Monto -->
-            <div class="sim-slider-group">
-              <div class="sim-label-row">
-                <label for="simAmount" class="sim-label">¿Cuánto dinero necesitas?</label>
-                <span class="sim-value-badge" id="amountDisplay">$ 5.000.000</span>
-              </div>
-              <input type="range" id="simAmount" class="sim-range" min="500000" max="25000000" step="250000" value="5000000">
-              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#9ca3af; margin-top:6px;">
-                <span>$ 500.000</span>
-                <span>$ 25.000.000</span>
-              </div>
+          <!-- Fila Superior (4 Tarjetas) -->
+          <div class="sim-summary-grid sim-summary-grid-top">
+            
+            <!-- 1. Cuota Mensual Total (Destacada) -->
+            <div class="sim-summary-card sim-card-featured">
+              <span class="sim-card-label">CUOTA MENSUAL TOTAL</span>
+              <div class="sim-card-value sim-val-featured" id="cardMonthlyPayment">$ 131.856</div>
+              <span class="sim-card-subtext">Capital + Interés + Seguro</span>
             </div>
 
-            <!-- Plazo -->
-            <div class="sim-slider-group">
-              <div class="sim-label-row">
-                <label for="simTerm" class="sim-label">¿En cuántos meses deseas pagar?</label>
-                <span class="sim-value-badge" id="termDisplay">24 meses</span>
-              </div>
-              <input type="range" id="simTerm" class="sim-range" min="6" max="48" step="6" value="24">
-              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#9ca3af; margin-top:6px;">
-                <span>6 meses</span>
-                <span>48 meses</span>
-              </div>
+            <!-- 2. Total a Pagar -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">TOTAL A PAGAR</span>
+              <div class="sim-card-value" id="cardTotalPayment">$ 7.911.378</div>
+              <span class="sim-card-subtext">Durante todo el plazo</span>
             </div>
 
-            <p style="font-size:0.8rem; color:#6b7280; line-height:1.4;">
-              * Valores aproximados con fines ilustrativos. Tasa de interés sujeta a perfil y políticas de riesgo de 101 Fintech.
-            </p>
+            <!-- 3. Total Intereses -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">TOTAL INTERESES</span>
+              <div class="sim-card-value" id="cardTotalInterest">$ 2.677.378</div>
+              <span class="sim-card-subtext">Intereses proyectados</span>
+            </div>
+
+            <!-- 4. Total Seguro -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">TOTAL SEGURO</span>
+              <div class="sim-card-value" id="cardTotalInsurance">$ 234.000</div>
+              <span class="sim-card-subtext">$ 3.900 / mes (Vida Deudor)</span>
+            </div>
+
           </div>
 
-          <!-- Resultado de Simulación -->
-          <div class="sim-result-card">
-            <div class="sim-result-header">
-              <h4>Cuota mensual estimada</h4>
-              <div class="sim-calculated-payment" id="monthlyPayment">$ 257.800</div>
-              <div class="sim-rate-info">Tasa E.A. desde 23.5% | Cuota fija mensual</div>
+          <!-- Fila Inferior (3 Tarjetas) -->
+          <div class="sim-summary-grid sim-summary-grid-bottom">
+            
+            <!-- 5. Comisión Cajero -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">COMISIÓN CAJERO (POR CADA USO)</span>
+              <div class="sim-card-value" id="cardAtmCommission">$ 0</div>
+              <span class="sim-card-subtext">Sin costo por uso</span>
             </div>
 
-            <div class="sim-details-list">
-              <div class="sim-detail-row">
-                <span>Total estimado a pagar:</span>
-                <strong id="totalPayment">$ 6.187.200</strong>
-              </div>
-              <div class="sim-detail-row">
-                <span>Intereses proyectados:</span>
-                <strong id="interestPayment">$ 1.187.200</strong>
-              </div>
-              <div class="sim-detail-row">
-                <span>Estudio de crédito:</span>
-                <strong>$ 0 COP (Gratis)</strong>
-              </div>
+            <!-- 6. Tasa Efectiva Anual -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">TASA EFECTIVA ANUAL</span>
+              <div class="sim-card-value" id="cardAnnualRate">19.99% EA</div>
+              <span class="sim-card-subtext" id="cardMonthlyRateText">TEM 1.53% M.V.</span>
             </div>
 
-            <a href="#solicitar" class="btn btn-accent btn-pill" style="width:100%; font-weight:700;">
+            <!-- 7. Cuota de Manejo -->
+            <div class="sim-summary-card">
+              <span class="sim-card-label">CUOTA DE MANEJO</span>
+              <div class="sim-card-value" id="cardHandlingFee">$ 0</div>
+              <span class="sim-card-subtext">Gratis de por vida</span>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Tabla de Amortización Plegable -->
+        <div class="sim-amortization-section" id="simAmortizationSection">
+          
+          <div class="sim-amort-header">
+            <h3 class="sim-amort-title">Tabla de Amortización</h3>
+            <span class="sim-amort-badge" id="amortBadgeText">60 Cuotas proyectadas</span>
+          </div>
+
+          <div class="sim-table-container">
+            <table class="sim-amort-table" aria-label="Tabla de Amortización">
+              <thead>
+                <tr>
+                  <th scope="col" style="text-align: center;"># Cuota</th>
+                  <th scope="col">Valor Cuota</th>
+                  <th scope="col">Interés</th>
+                  <th scope="col">Abono Capital</th>
+                  <th scope="col">Cuota Manejo</th>
+                  <th scope="col">Seguro</th>
+                  <th scope="col">Saldo</th>
+                </tr>
+              </thead>
+              <tbody id="amortTableBody">
+                <!-- Filas renderizadas dinámicamente con JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Botón Plegable Mostrar Más / Mostrar Menos -->
+          <div class="sim-toggle-wrapper">
+            <button type="button" id="btnToggleAmortization" class="btn-toggle-amort" aria-expanded="false">
+              <span>Mostrar todas las cuotas (60)</span>
+              <span class="toggle-arrow" aria-hidden="true">↓</span>
+            </button>
+          </div>
+
+          <!-- Botón CTA Solicitar Crédito -->
+          <div class="sim-cta-wrapper">
+            <a href="#solicitar" class="btn btn-accent btn-pill btn-sim-solicitar">
               Solicitar este crédito →
             </a>
           </div>
 
         </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECCIÓN CONTÁCTANOS (Estamos a un clic de distancia)
+         ========================================================================== -->
+    <section class="contacto-section" id="contacto" aria-label="Contáctanos">
+      <div class="contacto-container">
+        
+        <!-- Bloque Encabezado (Centrado) -->
+        <div class="contacto-header">
+          <span class="contacto-eyebrow">Estamos a un clic de distancia</span>
+          <h2 class="contacto-title">Contáctanos</h2>
+          <p class="contacto-subtitle">Ya sea para solicitar soporte o iniciar un nuevo proyecto con nosotros, estamos aquí para escucharte.</p>
+        </div>
+
+        <!-- Fila de 4 Canales de Contacto (Grid con divisores verticales) -->
+        <div class="contacto-grid">
+          
+          <!-- Columna 1: Escríbenos -->
+          <div class="contacto-card">
+            <img src="assets/img/svg/ico_escribenos.svg" alt="Escríbenos" class="contacto-card-icon" width="44" height="44" loading="lazy">
+            <h3 class="contacto-card-title">Escríbenos</h3>
+            <p class="contacto-card-text">Envíanos un correo a:</p>
+            <a href="mailto:atencionalcliente@101fintech.com" class="contacto-card-link">atencionalcliente@101fintech.com</a>
+          </div>
+
+          <!-- Columna 2: Chatea -->
+          <div class="contacto-card">
+            <img src="assets/img/svg/ico_chatea.svg" alt="Chatea" class="contacto-card-icon" width="44" height="44" loading="lazy">
+            <h3 class="contacto-card-title">Chatea</h3>
+            <p class="contacto-card-text">Escríbenos por WhatsApp:</p>
+            <a href="https://wa.me/573017767542" target="_blank" rel="noopener noreferrer" class="contacto-card-link">+57 301 776 7542</a>
+          </div>
+
+          <!-- Columna 3: Llámanos -->
+          <div class="contacto-card">
+            <img src="assets/img/svg/ico_llamanos.svg" alt="Llámanos" class="contacto-card-icon" width="44" height="44" loading="lazy">
+            <h3 class="contacto-card-title">Llámanos</h3>
+            <p class="contacto-card-text">Nuestras líneas de atención:</p>
+            <div class="contacto-card-phone-group">
+              <a href="tel:+573017767542" class="contacto-card-link">+57 301 776 75 42</a>
+              <span class="contacto-card-sep">/</span>
+              <a href="tel:6045606111" class="contacto-card-link">(604) 560 6111</a>
+            </div>
+          </div>
+
+          <!-- Columna 4: Síguenos -->
+          <div class="contacto-card">
+            <img src="assets/img/svg/ico_siguenos.svg" alt="Síguenos" class="contacto-card-icon" width="44" height="44" loading="lazy">
+            <h3 class="contacto-card-title">Síguenos</h3>
+            <p class="contacto-card-text">Conéctate en nuestras redes:</p>
+            <div class="contacto-social-row">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="contacto-social-icon" aria-label="Facebook">
+                <img src="assets/img/svg/ico_facebook_blue.svg" alt="Facebook" width="24" height="24" loading="lazy">
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contacto-social-icon" aria-label="Instagram">
+                <img src="assets/img/svg/ico_instagram_blue.svg" alt="Instagram" width="24" height="24" loading="lazy">
+              </a>
+              <a href="https://wa.me/573017767542" target="_blank" rel="noopener noreferrer" class="contacto-social-icon" aria-label="WhatsApp">
+                <img src="assets/img/svg/ico_whatsApp_blue.svg" alt="WhatsApp" width="24" height="24" loading="lazy">
+              </a>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -823,7 +1011,7 @@
   <!-- ==========================================================================
        FOOTER PRINCIPAL
        ========================================================================== -->
-  <footer class="site-footer" id="contacto" aria-label="Pie de página">
+  <footer class="site-footer" id="footer" aria-label="Pie de página">
     <div class="footer-container">
       
       <!-- Bloque Superior (Grid de 5 columnas) -->

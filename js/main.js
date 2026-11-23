@@ -352,45 +352,253 @@ function initScrollTop() {
    7. SIMULADOR DE CRÉDITO INTERACTIVO
    ========================================================================== */
 function initCreditSimulator() {
+  const transactionTypeSelect = document.getElementById('simTransactionType');
   const amountSlider = document.getElementById('simAmount');
   const termSlider = document.getElementById('simTerm');
   const amountDisplay = document.getElementById('amountDisplay');
   const termDisplay = document.getElementById('termDisplay');
-  const monthlyPaymentDisplay = document.getElementById('monthlyPayment');
-  const totalPaymentDisplay = document.getElementById('totalPayment');
-  const interestDisplay = document.getElementById('interestPayment');
+  const btnCalcular = document.getElementById('btnCalcularCredito');
+  const btnToggleAmort = document.getElementById('btnToggleAmortization');
+  const amortTableBody = document.getElementById('amortTableBody');
+  const amortBadgeText = document.getElementById('amortBadgeText');
+  const detailedResultsContainer = document.getElementById('simulador-resultados-detalle');
+
+  // Elementos de las 7 Tarjetas de Resumen
+  const cardMonthlyPayment = document.getElementById('cardMonthlyPayment');
+  const cardTotalPayment = document.getElementById('cardTotalPayment');
+  const cardTotalInterest = document.getElementById('cardTotalInterest');
+  const cardTotalInsurance = document.getElementById('cardTotalInsurance');
+  const cardAtmCommission = document.getElementById('cardAtmCommission');
+  const cardAnnualRate = document.getElementById('cardAnnualRate');
+  const cardHandlingFee = document.getElementById('cardHandlingFee');
+  const cardMonthlyRateText = document.getElementById('cardMonthlyRateText');
 
   if (!amountSlider || !termSlider) return;
 
-  // Formato Moneda COP
+  let isAmortizationExpanded = false;
+
+  // Formato Moneda COP sin decimales
   const formatCOP = (val) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
       currency: 'COP',
       maximumFractionDigits: 0
-    }).format(val);
+    }).format(Math.round(val));
+  };
+
+  // Cálculo y actualización de la barra de progreso rellena en color turquesa
+  const updateSliderProgress = (slider) => {
+    if (!slider) return;
+    const min = parseFloat(slider.min) || 0;
+    const max = parseFloat(slider.max) || 100;
+    const val = parseFloat(slider.value) || 0;
+    const percentage = ((val - min) / (max - min)) * 100;
+    slider.style.background = `linear-gradient(to right, #00E5B0 0%, #00E5B0 ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`;
   };
 
   function updateSimulation() {
+    const transactionType = transactionTypeSelect && transactionTypeSelect.value ? transactionTypeSelect.value : 'Compra Nacional';
     const principal = parseFloat(amountSlider.value);
     const months = parseInt(termSlider.value, 10);
-    const annualRate = 0.235; // Tasa efectiva anual ~23.5%
+
+    // Actualiza barra de progreso turquesa
+    updateSliderProgress(amountSlider);
+    updateSliderProgress(termSlider);
+
+    // Actualiza badges de los sliders
+    if (amountDisplay) amountDisplay.textContent = formatCOP(principal);
+    if (termDisplay) termDisplay.textContent = `${months} ${months === 1 ? 'mes' : 'meses'}`;
+
+    // Parámetros financieros exactos (según referencia image_69d72a.png)
+    // Tasa Efectiva Anual (E.A.): 19.99%
+    const annualRate = 0.1999;
+    // Tasa mensual equivalente mes vencido: TEM = (1 + EA)^(1/12) - 1
     const monthlyRate = Math.pow(1 + annualRate, 1 / 12) - 1;
 
-    // Cálculo cuota fija amortizada: C = P * (r / (1 - (1+r)^-n))
-    const monthlyPayment = principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
-    const totalPayment = monthlyPayment * months;
-    const totalInterest = totalPayment - principal;
+    // Cuota fija de amortización (capital + interés)
+    let cuotaAmort = 0;
+    if (months === 1) {
+      cuotaAmort = principal * (1 + monthlyRate);
+    } else {
+      cuotaAmort = principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -months)));
+    }
 
-    if (amountDisplay) amountDisplay.textContent = formatCOP(principal);
-    if (termDisplay) termDisplay.textContent = `${months} meses`;
-    if (monthlyPaymentDisplay) monthlyPaymentDisplay.textContent = formatCOP(monthlyPayment);
-    if (totalPaymentDisplay) totalPaymentDisplay.textContent = formatCOP(totalPayment);
-    if (interestDisplay) interestDisplay.textContent = formatCOP(totalInterest);
+    // Seguro de vida deudor mensual: $780 por cada millón de pesos (monto * 0.00078)
+    const monthlyInsurance = principal * 0.00078;
+    const totalInsurance = monthlyInsurance * months;
+
+    // Cuota mensual total (Cuota fija amortización + Seguro mensual)
+    const monthlyPaymentTotal = cuotaAmort + monthlyInsurance;
+
+    // Cuota de manejo y comisión cajero
+    const handlingFee = 0;
+    const atmCommission = 0;
+
+    // Generar tabla de amortización y calcular intereses acumulados exactos
+    let currentBalance = principal;
+    let totalInterestAccum = 0;
+    const rowsData = [];
+
+    for (let k = 1; k <= months; k++) {
+      const interestMonth = currentBalance * monthlyRate;
+      let capitalAmortMonth = cuotaAmort - interestMonth;
+
+      // En la última cuota o si el residuo es mínimo, ajustar para dejar saldo 0 exacto
+      if (k === months || currentBalance - capitalAmortMonth < 1) {
+        capitalAmortMonth = currentBalance;
+      }
+
+      currentBalance = Math.max(0, currentBalance - capitalAmortMonth);
+      totalInterestAccum += interestMonth;
+
+      rowsData.push({
+        quotaNum: k,
+        quotaValue: monthlyPaymentTotal,
+        interest: interestMonth,
+        capitalAmort: capitalAmortMonth,
+        handlingFee: handlingFee,
+        insurance: monthlyInsurance,
+        balance: currentBalance
+      });
+    }
+
+    // Total a pagar acumulado
+    const totalToPay = principal + totalInterestAccum + totalInsurance;
+
+    // Actualizar las 7 tarjetas de resumen financiero
+    if (cardMonthlyPayment) cardMonthlyPayment.textContent = formatCOP(monthlyPaymentTotal);
+    if (cardTotalPayment) cardTotalPayment.textContent = formatCOP(totalToPay);
+    if (cardTotalInterest) cardTotalInterest.textContent = formatCOP(totalInterestAccum);
+    if (cardTotalInsurance) cardTotalInsurance.textContent = formatCOP(totalInsurance);
+    if (cardAtmCommission) cardAtmCommission.textContent = formatCOP(atmCommission);
+    if (cardAnnualRate) cardAnnualRate.textContent = `${(annualRate * 100).toFixed(2)}% EA`;
+    if (cardHandlingFee) cardHandlingFee.textContent = formatCOP(handlingFee);
+    if (cardMonthlyRateText) cardMonthlyRateText.textContent = `TEM ${(monthlyRate * 100).toFixed(2)}% M.V.`;
+
+    // Actualizar badge de cuotas proyectadas
+    if (amortBadgeText) {
+      amortBadgeText.textContent = `${months} ${months === 1 ? 'Cuota proyectada' : 'Cuotas proyectadas'}`;
+    }
+
+    // Renderizar filas de la tabla de amortización
+    renderAmortizationTable(rowsData);
+  }
+
+  function renderAmortizationTable(rows) {
+    if (!amortTableBody) return;
+
+    let html = '';
+    const totalRows = rows.length;
+
+    rows.forEach((r, idx) => {
+      const isHidden = !isAmortizationExpanded && idx >= 10;
+      const rowClass = isHidden ? 'sim-amort-row sim-row-hidden' : 'sim-amort-row';
+
+      html += `
+        <tr class="${rowClass}">
+          <td style="text-align:center; font-weight:700; color:#14387F;">${r.quotaNum}</td>
+          <td style="font-weight:700; color:#14387F;">${formatCOP(r.quotaValue)}</td>
+          <td>${formatCOP(r.interest)}</td>
+          <td style="font-weight:600; color:#222222;">${formatCOP(r.capitalAmort)}</td>
+          <td>${formatCOP(r.handlingFee)}</td>
+          <td>${formatCOP(r.insurance)}</td>
+          <td style="font-weight:700; color:#14387F;">${formatCOP(r.balance)}</td>
+        </tr>
+      `;
+    });
+
+    amortTableBody.innerHTML = html;
+
+    // Control de visibilidad y texto del botón Mostrar Más / Menos
+    if (btnToggleAmort) {
+      if (totalRows <= 10) {
+        btnToggleAmort.style.display = 'none';
+      } else {
+        btnToggleAmort.style.display = 'inline-flex';
+        const spanText = btnToggleAmort.querySelector('span:first-child');
+        const arrow = btnToggleAmort.querySelector('.toggle-arrow');
+        if (isAmortizationExpanded) {
+          if (spanText) spanText.textContent = 'Mostrar menos cuotas';
+          if (arrow) arrow.textContent = '↑';
+          btnToggleAmort.setAttribute('aria-expanded', 'true');
+        } else {
+          if (spanText) spanText.textContent = `Mostrar todas las cuotas (${totalRows})`;
+          if (arrow) arrow.textContent = '↓';
+          btnToggleAmort.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+  }
+
+  // Toggle de filas en la tabla de amortización
+  if (btnToggleAmort) {
+    btnToggleAmort.addEventListener('click', () => {
+      isAmortizationExpanded = !isAmortizationExpanded;
+      const rows = amortTableBody.querySelectorAll('.sim-amort-row');
+      rows.forEach((row, idx) => {
+        if (idx >= 10) {
+          if (isAmortizationExpanded) {
+            row.classList.remove('sim-row-hidden');
+          } else {
+            row.classList.add('sim-row-hidden');
+          }
+        }
+      });
+
+      const totalRows = rows.length;
+      const spanText = btnToggleAmort.querySelector('span:first-child');
+      const arrow = btnToggleAmort.querySelector('.toggle-arrow');
+      if (isAmortizationExpanded) {
+        if (spanText) spanText.textContent = 'Mostrar menos cuotas';
+        if (arrow) arrow.textContent = '↑';
+        btnToggleAmort.setAttribute('aria-expanded', 'true');
+      } else {
+        if (spanText) spanText.textContent = `Mostrar todas las cuotas (${totalRows})`;
+        if (arrow) arrow.textContent = '↓';
+        btnToggleAmort.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Botón Calcular Crédito: Realiza cálculo, despliega el contenedor con animación y realiza scroll suave
+  if (btnCalcular) {
+    btnCalcular.addEventListener('click', () => {
+      updateSimulation();
+
+      if (detailedResultsContainer) {
+        const wasHidden = !detailedResultsContainer.classList.contains('is-visible');
+        detailedResultsContainer.classList.add('is-visible');
+
+        // Desplazamiento suave para visualizar cómodamente las tarjetas y tabla
+        setTimeout(() => {
+          detailedResultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, wasHidden ? 50 : 0);
+      }
+    });
   }
 
   amountSlider.addEventListener('input', updateSimulation);
   termSlider.addEventListener('input', updateSimulation);
+
+  // Conexión y control visual para el selector de tipo de transacción
+  if (transactionTypeSelect) {
+    transactionTypeSelect.addEventListener('change', () => {
+      if (transactionTypeSelect.value) {
+        transactionTypeSelect.classList.add('has-value');
+      } else {
+        transactionTypeSelect.classList.remove('has-value');
+      }
+      updateSimulation();
+    });
+
+    const selectWrapper = transactionTypeSelect.closest('.sim-select-wrapper');
+    if (selectWrapper) {
+      transactionTypeSelect.addEventListener('focus', () => selectWrapper.classList.add('is-focused'));
+      transactionTypeSelect.addEventListener('blur', () => selectWrapper.classList.remove('is-focused', 'is-open'));
+      transactionTypeSelect.addEventListener('click', () => selectWrapper.classList.toggle('is-open'));
+    }
+  }
+
   updateSimulation();
 }
 
