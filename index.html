@@ -115,7 +115,7 @@
         <div class="header-actions">
           
           <!-- Botón CTA: Pide tu tarjeta 101 -->
-          <a href="#solicitar" class="btn btn-primary btn-pill btn-card-order">
+          <a href="#solicitar" class="btn btn-primary btn-card-order">
             <svg class="card-icon-svg" width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.75" y="0.75" width="15.5" height="14.5" rx="2.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
               <line x1="0.75" y1="5.2" x2="16.25" y2="5.2" stroke="currentColor" stroke-width="1.3"/>
@@ -128,7 +128,7 @@
 
           <!-- Dropdown: Ingresar -->
           <div class="dropdown-wrapper has-dropdown">
-            <button class="btn btn-outline btn-pill btn-login dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            <button class="btn btn-outline btn-login dropdown-trigger" aria-expanded="false" aria-haspopup="true" type="button">
               <img src="assets/svg/ico_user.svg" alt="Usuario" width="18" height="20">
               <span>Ingresar</span>
             </button>
@@ -155,17 +155,23 @@
 
           <!-- Selector de Idioma -->
           <div class="lang-selector has-dropdown" id="langSelector">
-            <button class="lang-btn dropdown-trigger" aria-label="Cambiar idioma" aria-expanded="false">
-              <img src="assets/svg/icon_bandera_col.svg" alt="Colombia" class="lang-flag current-flag" width="22" height="22">
+            <button class="lang-btn dropdown-trigger" aria-label="Cambiar idioma" aria-expanded="false" type="button">
+              <img src="assets/img/svg/icon_bandera_col.svg" alt="Colombia" class="lang-flag current-flag" width="26" height="26">
               <span class="current-lang-code">ES</span>
+              <span class="lang-arrow" aria-hidden="true">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
             </button>
             <div class="dropdown-menu lang-dropdown" role="menu">
-              <button class="lang-option active" data-lang="es" role="menuitem">
-                <img src="assets/svg/icon_bandera_col.svg" alt="Colombia" width="18" height="18">
+              <button class="lang-option active" data-lang="es" role="menuitem" type="button">
+                <img src="assets/img/svg/icon_bandera_col.svg" alt="Colombia" class="lang-opt-flag" width="24" height="24">
                 <span>Español</span>
               </button>
-              <button class="lang-option" data-lang="en" role="menuitem">
-                <img src="assets/svg/icon_bandera_usa.svg" alt="USA" width="18" height="18">
+              <div class="lang-divider" aria-hidden="true"></div>
+              <button class="lang-option" data-lang="en" role="menuitem" type="button">
+                <img src="assets/img/svg/icon_bandera_usa.svg" alt="USA" class="lang-opt-flag" width="24" height="24">
                 <span>English</span>
               </button>
             </div>
@@ -303,6 +309,46 @@
             </div>
           </article>
 
+          <!-- SLIDE 6: TramiApp Global -->
+          <article class="carousel-slide slide-6 slide-tramiapp" aria-label="6 de 7: TramiApp Global">
+            <div class="slide-bg"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content hero-content-tramiapp">
+                <div class="hero-brand-logo-wrapper">
+                  <img src="assets/img/svg/lgo_tramiapp_global.svg" alt="TramiApp Global" class="hero-brand-logo" width="240">
+                </div>
+                <h2 class="hero-title hero-title-tramiapp">Todos los medios de pago en un solo lugar.</h2>
+                <p class="hero-subtitle hero-subtitle-tramiapp">Acepta tarjetas, códigos QR y el nuevo estándar Bre-B. Haz crecer tu negocio con una sola app.</p>
+                <div class="hero-cta-box">
+                  <a href="#tramiapp" class="btn btn-pill btn-cta-turquoise">
+                    <span>Descubre TramiApp</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SLIDE 7: Pasarela de Pago -->
+          <article class="carousel-slide slide-7 slide-pasarela" aria-label="7 de 7: Pasarela de Pago">
+            <div class="slide-bg"></div>
+            <div class="container hero-content-wrapper">
+              <div class="hero-content hero-content-pasarela">
+                <h2 class="hero-title hero-title-pasarela">
+                  <span class="title-block">Pasarela</span>
+                  <span class="title-block">de Pago</span>
+                </h2>
+                <p class="hero-subtitle hero-subtitle-pasarela">Integra nuestra pasarela en minutos. Pagos rápidos y seguros para que tus clientes compren al instante</p>
+                <div class="hero-cta-box">
+                  <a href="#pasarela" class="btn btn-pill btn-cta-turquoise">
+                    <span>Integra la Pasarela</span>
+                    <span class="arrow-icon" aria-hidden="true">›</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
         </div>
 
         <!-- CONTROLES DEL CARRUSEL (Cápsula centrada exactamente como en la imagen) -->
@@ -313,7 +359,7 @@
             <img src="assets/svg/arrow_prev.svg" alt="Anterior" width="42" height="42">
           </button>
 
-          <!-- Cápsula con Botón Pausa/Play y 5 Puntos -->
+          <!-- Cápsula con Botón Pausa/Play y Puntos Indicadores -->
           <div class="carousel-pill-capsule">
             
             <!-- Botón Pausa / Reanudar -->
@@ -327,13 +373,15 @@
 
             <div class="pill-divider" aria-hidden="true"></div>
 
-            <!-- 5 Indicadores de Diapositiva -->
+            <!-- Indicadores de Diapositiva -->
             <div class="carousel-dots" role="tablist" aria-label="Diapositivas del banner">
               <button class="dot active" data-index="0" role="tab" aria-selected="true" aria-label="Ir a diapositiva 1"></button>
               <button class="dot" data-index="1" role="tab" aria-selected="false" aria-label="Ir a diapositiva 2"></button>
               <button class="dot" data-index="2" role="tab" aria-selected="false" aria-label="Ir a diapositiva 3"></button>
               <button class="dot" data-index="3" role="tab" aria-selected="false" aria-label="Ir a diapositiva 4"></button>
               <button class="dot" data-index="4" role="tab" aria-selected="false" aria-label="Ir a diapositiva 5"></button>
+              <button class="dot" data-index="5" role="tab" aria-selected="false" aria-label="Ir a diapositiva 6"></button>
+              <button class="dot" data-index="6" role="tab" aria-selected="false" aria-label="Ir a diapositiva 7"></button>
             </div>
 
           </div>

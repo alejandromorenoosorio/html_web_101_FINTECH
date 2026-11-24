@@ -478,97 +478,221 @@ ul {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex-shrink: 0;
   white-space: nowrap;
 }
 
-.btn-card-order {
-  padding: 8px 18px;
-  font-size: 0.8125rem; /* ~13px */
-  font-weight: var(--font-weight-semibold);
-  gap: 7px;
+.header-actions .dropdown-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
 }
 
+/* Botón CTA: Pide tu tarjeta 101 */
+.btn-card-order {
+  height: 44px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #1B3675;
+  color: #FFFFFF;
+  border: 1.5px solid #1B3675;
+  padding: 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 8px;
+  line-height: 1;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-card-order:hover {
+  background-color: #142c62;
+  border-color: #142c62;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(27, 54, 117, 0.25);
+}
+
+.card-icon-svg {
+  width: 20px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* Botón: Ingresar */
 .btn-login {
-  padding: 7px 16px;
-  gap: 7px;
-  font-size: 0.8125rem; /* ~13px */
-  font-weight: var(--font-weight-semibold);
+  height: 44px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  color: #1B3675;
+  border: 1.5px solid #1B3675;
+  padding: 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  gap: 8px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-login:hover {
+  background-color: rgba(27, 54, 117, 0.05);
+  border-color: #1B3675;
+  color: #1B3675;
+  transform: translateY(-1px);
 }
 
 .btn-login img {
-  width: 15px;
-  height: 17px;
+  width: 16px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 /* Selector de Idioma */
 .lang-selector {
   position: relative;
-}
-
-.lang-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 7px;
-  border-radius: var(--radius-pill);
-  font-size: 0.8125rem; /* ~13px */
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
-  transition: all var(--transition-fast);
+}
+
+/* Botón disparador (Trigger) */
+.lang-btn {
+  border-radius: 22px;
+  height: 44px;
+  padding: 0 14px 0 8px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color var(--transition-fast);
+  outline: none;
 }
 
 .lang-btn:hover {
-  background-color: rgba(33, 59, 120, 0.05);
+  background-color: #E9ECF3;
 }
 
-.lang-flag {
-  width: 20px;
-  height: 20px;
+/* Bandera circular del trigger */
+.lang-flag.current-flag {
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  display: block;
 }
 
+/* Código de idioma */
+.current-lang-code {
+  color: #1B3675;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Chevron */
+.lang-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E293B;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+.lang-arrow svg {
+  display: block;
+}
+
+.lang-selector.dropdown-open .lang-arrow {
+  transform: rotate(180deg);
+}
+
+/* Menú desplegable (Dropdown) */
 .lang-dropdown {
-  width: 150px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12);
+  padding: 6px 0;
+  min-width: 165px;
+  position: absolute;
+  top: calc(100% + 6px);
   right: 0;
   left: auto;
-  transform: translateY(10px);
-  padding: 8px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  border: 1px solid rgba(229, 231, 235, 0.8);
 }
 
-.lang-selector:hover .lang-dropdown,
 .lang-selector.dropdown-open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
+/* Opciones internas */
 .lang-option {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 10px;
-  border-radius: var(--radius-xs);
-  font-size: 0.825rem;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
+  padding: 10px 16px;
   width: 100%;
+  border: none;
+  background: transparent;
+  color: #1B3675;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
   text-align: left;
-  transition: background var(--transition-fast);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.lang-option:hover,
+.lang-option:hover {
+  background-color: #F8FAFC;
+  color: #1B3675;
+}
+
 .lang-option.active {
-  background-color: rgba(20, 216, 194, 0.1);
-  color: var(--color-primary);
-  font-weight: var(--font-weight-semibold);
+  background-color: #F1F4F9;
+  color: #1B3675;
+  font-weight: 600;
 }
 
-.lang-option img {
-  width: 18px;
-  height: 18px;
+.lang-opt-flag {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Divisor horizontal sutil entre opciones */
+.lang-divider {
+  border-bottom: 1px solid #E5E7EB;
+  margin: 0 14px;
 }
 
 /* Botón Hamburguesa Móvil */
@@ -702,6 +826,40 @@ ul {
     linear-gradient(135deg, #07090e 0%, #172a56 50%, #07090e 100%);
 }
 
+/* SLIDE 6: TramiApp Global */
+.slide-6 .slide-bg,
+.slide-tramiapp .slide-bg {
+  background-image: 
+    linear-gradient(90deg, 
+      rgba(0, 0, 0, 0.88) 0%, 
+      rgba(0, 0, 0, 0.65) 42%, 
+      rgba(0, 0, 0, 0.05) 75%, 
+      rgba(0, 0, 0, 0) 100%),
+    url('../assets/img/navbar_hero_principal_tramiapp.jpg');
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* SLIDE 7: Pasarela de Pago */
+.slide-7 .slide-bg,
+.slide-pasarela .slide-bg {
+  background-image: 
+    linear-gradient(90deg, 
+      rgba(0, 0, 0, 0.88) 0%, 
+      rgba(0, 0, 0, 0.65) 42%, 
+      rgba(0, 0, 0, 0.05) 75%, 
+      rgba(0, 0, 0, 0) 100%),
+    url('../assets/img/navbar_hero_principal_pasarela.jpg');
+  background-position: center right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center right;
+}
+
 /* Patrón geométrico decorativo para slides adicionales */
 .slide-pattern {
   position: absolute;
@@ -742,6 +900,7 @@ ul {
 }
 
 /* Animación de entrada de textos */
+.carousel-slide.active .hero-brand-logo,
 .carousel-slide.active .hero-title,
 .carousel-slide.active .hero-subtitle,
 .carousel-slide.active .hero-highlight,
@@ -749,6 +908,7 @@ ul {
   animation: heroFadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+.carousel-slide.active .hero-brand-logo { animation-delay: 0.08s; }
 .carousel-slide.active .hero-title { animation-delay: 0.15s; }
 .carousel-slide.active .hero-subtitle { animation-delay: 0.3s; }
 .carousel-slide.active .hero-highlight { animation-delay: 0.4s; }
@@ -825,6 +985,88 @@ ul {
 }
 
 .btn-hero:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   Estilos específicos para nuevos Slides (TramiApp Global & Pasarela de Pago)
+   -------------------------------------------------------------------------- */
+.hero-brand-logo {
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.hero-title-tramiapp {
+  color: #1CD4B0;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.15;
+  max-width: 520px;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.hero-subtitle-tramiapp {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 440px;
+  margin-bottom: 32px;
+}
+
+.hero-title-pasarela {
+  color: #1CD4B0;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.hero-subtitle-pasarela {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 460px;
+  margin-bottom: 32px;
+}
+
+.btn-cta-turquoise {
+  background-color: #1CD4B0;
+  color: #0F172A;
+  border-radius: 50px;
+  padding: 13px 28px;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  border: none;
+  font-family: var(--font-family);
+  box-shadow: 0 4px 14px rgba(28, 212, 176, 0.35);
+  transition: all var(--transition-normal);
+}
+
+.btn-cta-turquoise:hover {
+  background-color: #38e4c2;
+  color: #0F172A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(28, 212, 176, 0.5);
+}
+
+.btn-cta-turquoise .arrow-icon {
+  font-size: 14px;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.btn-cta-turquoise:hover .arrow-icon {
   transform: translateX(4px);
 }
 

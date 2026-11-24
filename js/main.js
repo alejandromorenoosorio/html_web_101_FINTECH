@@ -25,20 +25,41 @@ document.addEventListener('DOMContentLoaded', () => {
    1. HERO CAROUSEL
    ========================================================================== */
 function initHeroCarousel() {
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dots .dot');
+  const carouselContainer = document.querySelector('.carousel-container');
+  if (!carouselContainer) return;
+
+  const slides = carouselContainer.querySelectorAll('.carousel-slide');
+  if (!slides.length) return;
+
+  const dotsContainer = carouselContainer.querySelector('.carousel-dots');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
   const pausePlayBtn = document.getElementById('pausePlayBtn');
-  const carouselContainer = document.querySelector('.carousel-container');
-
-  if (!slides.length) return;
 
   let currentIndex = 0;
   const totalSlides = slides.length;
   const slideDuration = 6000; // 6 segundos por diapositiva
   let autoplayTimer = null;
   let isPlaying = true;
+
+  // Sincronizar dinámicamente los puntos indicadores (dots) con el total de diapositivas
+  if (dotsContainer) {
+    const existingDots = dotsContainer.querySelectorAll('.dot');
+    if (existingDots.length !== totalSlides) {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', i.toString());
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.setAttribute('aria-label', `Ir a diapositiva ${i + 1}`);
+        dotsContainer.appendChild(dot);
+      }
+    }
+  }
+
+  const dots = dotsContainer ? dotsContainer.querySelectorAll('.dot') : [];
 
   // Cambiar a diapositiva por índice
   function goToSlide(index) {
@@ -312,25 +333,80 @@ function initLanguageSelector() {
   const langSelector = document.getElementById('langSelector');
   if (!langSelector) return;
 
+  const trigger = langSelector.querySelector('.dropdown-trigger');
   const currentFlag = langSelector.querySelector('.current-flag');
   const currentLangCode = langSelector.querySelector('.current-lang-code');
   const langOptions = langSelector.querySelectorAll('.lang-option');
 
+  // Mapeo de información y banderas de idioma
+  const languageData = {
+    es: {
+      code: 'ES',
+      name: 'Español',
+      flag: 'assets/img/svg/icon_bandera_col.svg',
+      alt: 'Colombia'
+    },
+    en: {
+      code: 'EN',
+      name: 'English',
+      flag: 'assets/img/svg/icon_bandera_usa.svg',
+      alt: 'USA'
+    }
+  };
+
   langOptions.forEach((option) => {
     option.addEventListener('click', (e) => {
       e.preventDefault();
-      const code = option.getAttribute('data-lang');
-      const flagSrc = option.querySelector('img').getAttribute('src');
+      e.stopPropagation();
 
-      if (currentFlag) currentFlag.setAttribute('src', flagSrc);
-      if (currentLangCode) currentLangCode.textContent = code.toUpperCase();
+      const langCode = (option.getAttribute('data-lang') || 'es').toLowerCase();
+      const data = languageData[langCode];
 
-      langOptions.forEach((opt) => opt.classList.remove('active'));
-      option.classList.add('active');
+      if (data) {
+        if (currentFlag) {
+          currentFlag.setAttribute('src', data.flag);
+          currentFlag.setAttribute('alt', data.alt);
+        }
+        if (currentLangCode) {
+          currentLangCode.textContent = data.code;
+        }
+      } else {
+        const flagImg = option.querySelector('img');
+        if (currentFlag && flagImg) {
+          currentFlag.setAttribute('src', flagImg.getAttribute('src'));
+          currentFlag.setAttribute('alt', flagImg.getAttribute('alt'));
+        }
+        if (currentLangCode) {
+          currentLangCode.textContent = langCode.toUpperCase();
+        }
+      }
 
+      // Actualizar opción activa
+      langOptions.forEach((opt) => {
+        const isCurrent = opt === option;
+        opt.classList.toggle('active', isCurrent);
+        opt.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+      });
+
+      // Cerrar menú desplegable y actualizar aria-expanded
       langSelector.classList.remove('dropdown-open');
+      if (trigger) {
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      // Dejar lista la estructura para alternar el idioma del sitio
+      setSiteLanguage(langCode);
     });
   });
+}
+
+/**
+ * Función base para alternar el idioma del sitio
+ */
+function setSiteLanguage(lang) {
+  document.documentElement.setAttribute('lang', lang);
+  window.currentLanguage = lang;
+  document.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
 }
 
 /* ==========================================================================
