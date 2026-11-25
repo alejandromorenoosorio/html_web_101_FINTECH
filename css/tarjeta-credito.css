@@ -1,0 +1,785 @@
+/* ==========================================================================
+   101 FINTECH - TARJETA DE CRÉDITO (PÁGINA DEDICADA)
+   Hoja de estilos complementaria enlazada después de css/styles.css
+   Referencia visual: assets/img/referencias/referencia_hero_tarjeta.png
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES ESPECÍFICAS DE TARJETA DE CRÉDITO
+   -------------------------------------------------------------------------- */
+:root {
+  --color-tc-dark-bg: #000000;
+  --color-tc-subnav-bg: #181A1F;
+  --color-tc-subnav-border: rgba(255, 255, 255, 0.12);
+  --color-tc-turquoise: #1CD4B0;
+  --color-tc-turquoise-glow: rgba(28, 212, 176, 0.28);
+  --color-tc-btn-text: #0B0F19;
+  --subnav-height: 46px;
+}
+
+/* Scroll suave en toda la página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --------------------------------------------------------------------------
+   2. BARRA DE SUB-NAVEGACIÓN INTERNA (SUB-NAV STICKY DE ANCLAJE)
+   -------------------------------------------------------------------------- */
+.subnav-tarjeta {
+  position: sticky;
+  top: var(--header-height, 82px);
+  width: 100%;
+  height: var(--subnav-height);
+  background-color: var(--color-tc-subnav-bg);
+  border-bottom: 1px solid var(--color-tc-subnav-border);
+  z-index: 490; /* Inmediatamente debajo del navbar principal (z-index: 500) */
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.subnav-container {
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.subnav-link {
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  transition: color 0.22s ease;
+}
+
+.subnav-link:hover,
+.subnav-link.active {
+  color: var(--color-tc-turquoise);
+}
+
+.subnav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-tc-turquoise);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-origin: center;
+}
+
+.subnav-link:hover::after,
+.subnav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* --------------------------------------------------------------------------
+   3. SECCIÓN HERO PRINCIPAL (<section class="hero-tarjeta">)
+   -------------------------------------------------------------------------- */
+.hero-tarjeta {
+  position: relative;
+  width: 100%;
+  /* Misma altura visual del hero principal de index.html */
+  height: calc(100vh - var(--header-height, 82px) - var(--subnav-height, 46px));
+  min-height: 640px;
+  max-height: 880px;
+  background-color: var(--color-tc-dark-bg);
+  background-image: radial-gradient(circle at 68% 50%, #1F2024 0%, #0D0E10 48%, #000000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Contenedor centrado a 2 columnas */
+.hero-tarjeta-container {
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Columna Izquierda: Textos y CTA --- */
+.hero-tarjeta-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+/* Título Principal (h1) */
+.hero-tarjeta-title {
+  color: var(--color-tc-turquoise);
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 1.12;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.025em;
+}
+
+.hero-tarjeta-title .title-line {
+  display: block;
+}
+
+/* Subtítulo */
+.hero-tarjeta-subtitle {
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 23px;
+  line-height: 1.4;
+  max-width: 440px;
+  margin: 0 0 36px 0;
+  letter-spacing: -0.01em;
+}
+
+/* Botón CTA: Píldora Turquesa */
+.hero-tarjeta-cta-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.btn-hero-tarjeta {
+  background-color: var(--color-tc-turquoise);
+  color: var(--color-tc-btn-text);
+  border-radius: 50px;
+  padding: 14px 30px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 18px rgba(28, 212, 176, 0.25);
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.btn-hero-tarjeta:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 8px 26px rgba(28, 212, 176, 0.45);
+}
+
+.btn-hero-tarjeta:active {
+  transform: translateY(0);
+}
+
+.btn-hero-tarjeta .cta-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-0.5px);
+  transition: transform 0.2s ease;
+}
+
+.btn-hero-tarjeta:hover .cta-arrow {
+  transform: translateX(3px) translateY(-0.5px);
+}
+
+/* --- Columna Derecha: Tarjeta Visa Platinum SVG --- */
+.hero-tarjeta-card-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Resplandor ambiental adicional detrás de la tarjeta */
+.hero-tarjeta-glow-ambient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(28, 212, 176, 0.08) 0%, rgba(31, 32, 36, 0.3) 40%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Tarjeta SVG con inclinación y sombra realista */
+.hero-tarjeta-card-img {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  transform: rotate(-18deg);
+  filter: drop-shadow(0 28px 48px rgba(0, 0, 0, 0.85));
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+}
+
+.hero-tarjeta-card-img:hover {
+  transform: rotate(-16deg) translateY(-6px) scale(1.015);
+  filter: drop-shadow(0 34px 56px rgba(0, 0, 0, 0.95));
+}
+
+/* --------------------------------------------------------------------------
+   4. SECCIÓN BENEFICIOS 101 FINTECH (#beneficios-101)
+   -------------------------------------------------------------------------- */
+.seccion-beneficios-101 {
+  width: 100%;
+  background-color: #F8FAFC;
+  padding: 96px 24px;
+  box-sizing: border-box;
+  scroll-margin-top: calc(var(--header-height, 82px) + var(--subnav-height, 46px));
+}
+
+.beneficios-101-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Bloque Encabezado --- */
+.beneficios-header {
+  text-align: left;
+}
+
+.beneficios-epigrafe {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
+}
+
+.beneficios-title {
+  color: #14387F;
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.15;
+  max-width: 800px;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.beneficios-title .title-block {
+  display: block;
+}
+
+.beneficios-subtitle {
+  color: #334155;
+  font-size: 14.5px;
+  line-height: 1.55;
+  max-width: 600px;
+  margin: 0 0 56px 0;
+}
+
+/* --- Bloque Destacado Intermedio (2 Columnas) --- */
+.beneficios-destacado-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 52px;
+}
+
+.beneficios-destacado-texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.beneficios-destacado-title {
+  color: #14387F;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.015em;
+}
+
+.beneficios-destacado-title .title-block {
+  display: block;
+}
+
+.beneficios-destacado-desc {
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.5;
+  max-width: 300px;
+  margin: 0;
+}
+
+.beneficios-destacado-media {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beneficios-destacado-img {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  display: block;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.beneficios-destacado-img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+/* --- Fila Inferior de 5 Tarjetas de Beneficios --- */
+.beneficios-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.beneficio-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 20px;
+  padding: 32px 18px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.beneficio-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.11);
+  border-color: rgba(0, 191, 165, 0.28);
+}
+
+.beneficio-card-value {
+  font-size: 23px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.beneficio-card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #00BFA5;
+  margin: 0 0 14px 0;
+  line-height: 1.3;
+}
+
+.beneficio-card-desc {
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. SECCIÓN REQUISITOS (#requisitos)
+   -------------------------------------------------------------------------- */
+.seccion-requisitos {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 96px 24px;
+  box-sizing: border-box;
+  background-image: url('../assets/img/tarjeta/barista_girl_asi_funciona.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  scroll-margin-top: calc(var(--header-height, 82px) + var(--subnav-height, 46px));
+}
+
+/* Filtro oscuro obligatorio (Overlay de alto contraste) */
+.seccion-requisitos::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(10, 12, 16, 0.78), rgba(10, 12, 16, 0.82));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.requisitos-container {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Bloque Encabezado Centrado --- */
+.requisitos-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.requisitos-epigrafe {
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
+}
+
+.requisitos-title {
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* --- Cuadrícula de 2 Tarjetas Blancas --- */
+.requisitos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 780px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.requisito-card {
+  background-color: #FFFFFF;
+  border-radius: 28px;
+  padding: 44px 36px 36px;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.requisito-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 52px rgba(0, 0, 0, 0.42);
+}
+
+.requisito-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.requisito-card-title {
+  color: #14387F;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 14px 0;
+  letter-spacing: -0.015em;
+}
+
+.requisito-card-title .title-block {
+  display: block;
+}
+
+.requisito-card-tag {
+  color: #1CD4B0;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 28px 0;
+}
+
+.requisito-card-desc {
+  color: #1E293B;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 240px;
+  margin: 0;
+}
+
+/* Lista de ítems con iconos circulares */
+.requisito-items-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.requisito-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.requisito-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+}
+
+.requisito-icon-circle img {
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
+}
+
+.requisito-item-text {
+  font-size: 13.5px;
+  color: #1E293B;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Footer y Botón de la tarjeta */
+.requisito-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.requisito-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #0F172A;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.requisito-card-btn:hover {
+  color: #14387F;
+}
+
+.requisito-btn-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #1CD4B0;
+  color: #0F172A;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.requisito-card-btn:hover .requisito-btn-arrow {
+  transform: scale(1.08) translateX(2px);
+  filter: brightness(1.08);
+  box-shadow: 0 4px 14px rgba(28, 212, 176, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   6. OTRAS SECCIONES ANCLA (PLACEHOLDERS CON SCROLL-MARGIN)
+   -------------------------------------------------------------------------- */
+.tc-anchor-section {
+  scroll-margin-top: calc(var(--header-height, 82px) + var(--subnav-height, 46px) + 20px);
+  padding: 80px 0;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+}
+
+.tc-anchor-section:nth-of-type(even) {
+  background-color: var(--color-bg-alt);
+}
+
+.tc-section-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tc-section-tag {
+  display: inline-block;
+  color: var(--color-primary);
+  background-color: rgba(33, 59, 120, 0.08);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+}
+
+.tc-section-heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 14px;
+}
+
+.tc-section-intro {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  max-width: 680px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+/* Cuadrículas de presentación para las secciones */
+.tc-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tc-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.tc-card-box {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tc-card-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(33, 59, 120, 0.09);
+  border-color: rgba(28, 212, 176, 0.5);
+}
+
+.tc-card-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.tc-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.tc-card-desc {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+/* Requisitos List */
+.tc-req-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tc-req-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.tc-req-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-tc-turquoise);
+  color: var(--color-tc-btn-text);
+  font-weight: 800;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* App Download Banner */
+.tc-app-banner {
+  background: linear-gradient(135deg, #152752 0%, #213B78 100%);
+  border-radius: 20px;
+  padding: 48px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.tc-app-banner h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.tc-app-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.tc-app-badges-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.tc-app-badge-btn img {
+  height: 46px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.tc-app-badge-btn:hover img {
+  transform: translateY(-2px);
+}
