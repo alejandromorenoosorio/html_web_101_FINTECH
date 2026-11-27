@@ -422,7 +422,12 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  scroll-margin-top: calc(var(--header-height, 82px) + var(--subnav-height, 46px));
+  scroll-margin-top: 100px;
+}
+
+#requisitos,
+#pasos {
+  scroll-margin-top: 100px;
 }
 
 /* Filtro oscuro obligatorio (Overlay de alto contraste) */
